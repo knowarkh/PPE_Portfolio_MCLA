@@ -7,5 +7,6 @@ namespace DAO {
         abstract function update();
         abstract function delete();
     }
+    // test laurent
 }
 ?>
