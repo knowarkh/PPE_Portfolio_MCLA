@@ -5,6 +5,7 @@ namespace DAO {
         abstract function read();
         abstract function create();
         abstract function update();
+        abstract function delete();
     }
 }
 ?>
