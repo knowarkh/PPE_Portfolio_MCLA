@@ -8,5 +8,6 @@ namespace DAO {
         abstract function delete();
     }
     // test laurent
+    // test laurent2
 }
 ?>
