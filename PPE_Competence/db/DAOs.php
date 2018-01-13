@@ -6,6 +6,7 @@ namespace DAO {
         abstract function create();
         abstract function update();
         abstract function delete();
+        abstact function onsenfou();
         protected $key;
         protected $table;
         function __construct($key, $table) {
