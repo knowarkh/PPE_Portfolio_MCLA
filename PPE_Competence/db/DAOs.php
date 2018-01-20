@@ -35,6 +35,9 @@ namespace DAO
             return $id;
         }
     }
+    // test laurent
+    // test laurent2
+    //test laurent3
 }
 namespace DAO\Stagiaire
 {
