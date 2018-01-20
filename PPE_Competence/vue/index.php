@@ -13,6 +13,12 @@
 $test="bonjour tout le monde";
 echo $test;
 
+$daoStagiaire = new \DAO\Stagiaire\StagiaireDAO ();
+$stag=$daoStagiaire->read(1);
+echo "avant: $stag";
+$daoStagiaire->delete($stag);
+echo "effacé : $stag";
+
 ?>
 
     </body>
