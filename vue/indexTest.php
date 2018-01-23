@@ -8,7 +8,11 @@
 <body>
 
 
+
+
+
 <?php
+
 
 include ("../db/Connexion.php");
 include ("../db/DAOs.php");
@@ -366,6 +370,23 @@ function deleteVal()
     $daoVal->delete($val);
     echo "effacé : $val";
 }
+
+?>
+
+<?php
+include ("../db/Connexion.php");
+// $test="bonjour tout le monde";
+// echo $test;
+
+// $daoStagiaire = new \DAO\Stagiaire\StagiaireDAO ();
+// $stag=$daoStagiaire->read(1);
+// echo "avant: $stag";
+// $daoStagiaire->delete($stag);
+// echo "effacé : $stag";
+
+
+
+echo DB\Connexion\Connexion::getTableauCompetences(1);
 
 ?>
 
