@@ -1,12 +1,11 @@
 <?php
-
 namespace Competence\Stagiaire
 {
 
     class Stagiaire
     {
 
-        private $idS = -1;
+        private $idS = - 1;
 
         private $nom = "COLLET";
 
@@ -69,15 +68,83 @@ namespace Competence\Stagiaire
         }
     }
 }
+namespace Competence\Activite
+{
+
+    class Activite
+    {
+
+        private $idA;
+
+        private $denomination;
+
+        private $processus;
+
+        private $domaineActivite;
+
+        function __construct($denomination, $processus, $domaineActivite)
+        {
+            $this->denomination = $denomination;
+            $this->domaineActivite = $domaineActivite;
+            $this->processus = $processus;
+        }
+
+        public function getIdA()
+        {
+            return $this->idA;
+        }
+
+        public function getDenomination()
+        {
+            return $this->denomination;
+        }
+
+        public function getProcessus()
+        {
+            return $this->processus;
+        }
+
+        public function getDomaineActivite()
+        {
+            return $this->domaineActivite;
+        }
+
+        public function setIdA($idA)
+        {
+            $this->idA = $idA;
+        }
+
+        public function setDenomination($denomination)
+        {
+            $this->denomination = $denomination;
+        }
+
+        public function setProcessus($processus)
+        {
+            $this->processus = $processus;
+        }
+
+        public function setDomaineActivite($domaineActivite)
+        {
+            $this->domaineActivite = $domaineActivite;
+        }
+
+        function __toString()
+        {
+            $rep = "<div classe=\"activite\">$this->idA $this->denomination $this->processus $this->domaineActivite</div>";
+            return $rep;
+        }
+    }
+}
 namespace Competence\Competence
 {
 
     class Competence
     {
 
-        private $idC = -1;
+        private $idC = - 1;
 
-        private $idA = -1;
+        private $idA = - 1;
 
         private $description = "bonjour";
 
@@ -125,130 +192,6 @@ namespace Competence\Competence
         }
     }
 }
-namespace Competence\Activite
-{
-
-    class Activite
-    {
-
-        private $idA;
-
-        private $denomination;
-
-        private $processus;
-
-        private $domaineDactivite;
-
-        function __construct($denomination, $processus, $domainedactivite)
-        {
-            $this->denomination = $denomination;
-            $this->domaineDactivite = $domainedactivite;
-            $this->processus = $processus;
-        }
-
-        public function getIdA()
-        {
-            return $this->idA;
-        }
-
-        public function getDenomination()
-        {
-            return $this->denomination;
-        }
-
-        public function getProcessus()
-        {
-            return $this->processus;
-        }
-
-        public function getDomaineDactivite()
-        {
-            return $this->domaineDactivite;
-        }
-
-        public function setIdA($idA)
-        {
-            $this->idA = $idA;
-        }
-
-        public function setDenomination($denomination)
-        {
-            $this->denomination = $denomination;
-        }
-
-        public function setProcessus($processus)
-        {
-            $this->processus = $processus;
-        }
-
-        public function setDomaineDactivite($domaineDactivite)
-        {
-            $this->domaineDactivite = $domaineDactivite;
-        }
-
-        function __toString()
-        {
-            $rep = "<div classe=\"activite\">$this->idA $this->denomination $this->processus $this->domaineDactivite</div>";
-            return $rep;
-        }
-    }
-}
-namespace Competence\Documentation
-{
-
-    class Documentation
-    {
-
-        private $idS;
-
-        private $idP;
-
-        private $description;
-
-        function __construct($idS, $idP, $description)
-        {
-            $this->description = $description;
-            $this->idP = $idP;
-            $this->idS = $idS;
-        }
-
-        public function getIdS()
-        {
-            return $this->idS;
-        }
-
-        public function getIdP()
-        {
-            return $this->idP;
-        }
-
-        public function getDescription()
-        {
-            return $this->description;
-        }
-
-        public function setIdS($idS)
-        {
-            $this->idS = $idS;
-        }
-
-        public function setIdP($idP)
-        {
-            $this->idP = $idP;
-        }
-
-        public function setDescription($description)
-        {
-            $this->description = $description;
-        }
-
-        function __toString()
-        {
-            $rep = "<div classe=\"documentation\">$this->idS $this->idP $this->description</div>";
-            return $rep;
-        }
-    }
-}
 namespace Competence\Projet
 {
 
@@ -291,30 +234,37 @@ namespace Competence\Projet
         }
     }
 }
-namespace Competence\Document
+namespace Competence\Documentation
 {
 
-    class Document
+    class Documentation
     {
 
-        private $idR;
+        private $idD = -1;
+        
+        private $idS = -1;
 
-        private $idS;
+        private $idP = -1;
 
-        private $idP;
+        private $description = "description";
 
-        function __construct($idR, $idS, $idP)
+        function __construct($idS, $idP, $description)
         {
+            $this->description = $description;
             $this->idP = $idP;
-            $this->idR = $idR;
             $this->idS = $idS;
         }
 
-        public function getIdR()
+        public function getIdD()
         {
-            return $this->idR;
+            return $this->idD;
         }
-
+    
+        public function setIdD($idD)
+        {
+            $this->idD = $idD;
+        }
+    
         public function getIdS()
         {
             return $this->idS;
@@ -325,9 +275,9 @@ namespace Competence\Document
             return $this->idP;
         }
 
-        public function setIdR($idR)
+        public function getDescription()
         {
-            $this->idR = $idR;
+            return $this->description;
         }
 
         public function setIdS($idS)
@@ -340,24 +290,30 @@ namespace Competence\Document
             $this->idP = $idP;
         }
 
+        public function setDescription($description)
+        {
+            $this->description = $description;
+        }
+
         function __toString()
         {
-            $rep = "<div classe=\"document\">$this->idR $this->idS $this->idP</div>";
+            $rep = "<div classe=\"documentation\">$this->idD $this->idS $this->idP $this->description</div>";
             return $rep;
         }
     }
 }
+
 namespace Competence\Ressource
 {
 
     class Ressource
     {
 
-        private $idR;
+        private $idR = -1;
 
-        private $chemin;
+        private $chemin = "../C:/..";
 
-        private $typeFichier;
+        private $typeFichier = "texte";
 
         function __construct($chemin, $typeFichier)
         {
@@ -397,77 +353,23 @@ namespace Competence\Ressource
 
         function __toString()
         {
-            $rep = "<div classe=\"ressource\">$this->idR $this->chemin $this->typeFichier</div>";
+            return $rep = "<div classe=\"ressource\">$this->idR $this->chemin $this->typeFichier</div>";
         }
     }
 }
-namespace Competence\Preuve
-{
 
-    class Preuve
-    {
-
-        private $idR;
-
-        private $idS;
-
-        private $idC;
-
-        function __construct($idR, $idS, $idC)
-        {
-            $this->idC = $idC;
-            $this->idR = $idR;
-            $this->idS = $idS;
-        }
-
-        public function getIdR()
-        {
-            return $this->idR;
-        }
-
-        public function getIdS()
-        {
-            return $this->idS;
-        }
-
-        public function getIdC()
-        {
-            return $this->idC;
-        }
-
-        public function setIdR($idR)
-        {
-            $this->idR = $idR;
-        }
-
-        public function setIdS($idS)
-        {
-            $this->idS = $idS;
-        }
-
-        public function setIdC($idC)
-        {
-            $this->idC = $idC;
-        }
-
-        function __toString()
-        {
-            $rep = "<div classe=\"preuve\">$this->idR $this->idS $this->isC</div>";
-            return $rep;
-        }
-    }
-}
 namespace Competence\Validation
 {
 
     class Validation
     {
+        private $idV = -1;
 
-        private $idS;
+        private $idS = -1;
 
-        private $idC;
+        private $idC = -1;
 
-        private $contexte;
+        private $contexte = "TP";
 
         function __construct($idS, $idC, $contexte)
         {
@@ -476,6 +378,23 @@ namespace Competence\Validation
             $this->idS = $idS;
         }
 
+        
+        /**
+         * @return number
+         */
+        public function getIdV()
+        {
+            return $this->idV;
+        }
+    
+        /**
+         * @param number $idV
+         */
+        public function setIdV($idV)
+        {
+            $this->idV = $idV;
+        }
+    
         public function getIdS()
         {
             return $this->idS;
@@ -505,10 +424,15 @@ namespace Competence\Validation
         {
             $this->contexte = $contexte;
         }
+        
+        public function isActiviteValide()
+        {
+         //TODO   
+        }
 
         function __toString()
         {
-            $rep = "<div classe=\"validation\">$this->idS $this->idC $this->contexte</div>";
+            return $rep = "<div classe=\"validation\"> $this->idV $this->idS $this->idC $this->contexte</div>";
         }
     }
 }
