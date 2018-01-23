@@ -1,0 +1,18 @@
+@charset "ISO-8859-1";
+
+.tableauGeneral {
+	border-collapse: collapse;
+	background-color: #FCFAE1;
+	/* Les bordures du tableau seront collées (plus joli) */
+}
+
+
+
+.tableauGeneral th {
+	background-color: #bb9e7d;
+}
+
+.tableauCompetence
+{
+	border-bottom: thin solid #bb9e7d;
+}

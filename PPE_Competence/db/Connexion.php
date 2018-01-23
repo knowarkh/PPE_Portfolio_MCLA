@@ -39,7 +39,7 @@ namespace DB\Connexion
             return $rep . "</table>";
         }
 
-        
+        //Affiche le tableau des activités validées
         static function getTableauCompetences($idStagiaire){
             //requête mySQL permettant de récupérer les données nécéssaires au tableau 
             $sql = "SELECT DISTINCT activite.processus, activite.domaineActivite, activite.denomination, competence.description, validation.contexte, ressource.chemin
@@ -51,8 +51,7 @@ AND validation.idC= preuve.idC
 AND ressource.idR= preuve.idR
 AND activite.idA = competence.idA;
 ";
-            
-            
+                 
             $rep = "<table class=\"tableauGeneral\"><tr><th>Activite</th><th>Competence</th></tr>";
             $oldActivite="";
             $oldCompetence="";
