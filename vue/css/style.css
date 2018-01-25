@@ -106,13 +106,13 @@ hr {
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
 	color: #0dad8d !important;
-	background-color: transparent;
+	background-color:transparent;
 }
 .navbar-toggle {
 	border-radius: 0;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-	background-color: #0dad8d;
+	background-color: black;
 	border-color: #0dad8d;
 }
 .navbar-default .navbar-toggle:hover>.icon-bar {

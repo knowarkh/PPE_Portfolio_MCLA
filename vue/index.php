@@ -62,11 +62,11 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#home" class="page-scroll">Accueil</a></li>
 					<li><a href="#services-section" class="page-scroll">Nos
-							compétences</a></li>
+							compÃ©tences</a></li>
 					<li><a href="#about-section" class="page-scroll">A propos
 							de la formation</a></li>
 					<li><a href="#team-section" class="page-scroll">Notre
-							équipe</a></li>
+							Ã©quipe</a></li>
 					<li><a href="#contact-section" class="page-scroll">Contact</a></li>
 					<li> <!-- <a href="#connect" class="btn-connect">Se connecter</a> --> 
 					<a href="mdp.php" class="btn-connect">Se connecter</a>
@@ -90,7 +90,7 @@
 			<h1>
 				Bienvenue sur <strong>Notre site</strong>
 			</h1>
-			<p>Nous seront bientôt diplômé! Ce site met en avant notre
+			<p>Nous seront bientÃ´t diplÃ´mÃ©! Ce site met en avant notre
 				savoir-faire.</p>
 			<a href="#services-section"
 				class="btn btn-default btn-lg page-scroll">En savoir plus</a>
@@ -101,28 +101,28 @@
 	<div id="services-section" class="text-center">
 		<div class="container">
 			<div class="section-title center">
-				<h2>Nos compétences</h2>
+				<h2>Nos compÃ©tences</h2>
 				<hr>
 				<div class="clearfix"></div>
-				<p>Ce site met à disposition un accès aux compétences de notre
-					équipes afin de valider notre BTS.</p>
+				<p>Ce site met Ã  disposition un accÃ¨s aux compï¿½tences de notre
+					Ã©quipes afin de valider notre BTS.</p>
 			</div>
 			<div class="space"></div>
 			<div class="row">
 				<div class="col-md-4 col-sm-6 service">
 					<i class="fa fa-desktop"></i>
-					<h4>Développement Web</h4>
+					<h4>Dï¿½veloppement Web</h4>
 					<p>HTML, CSS, XML, PHP,...</p>
 				</div>
 				<div class="col-md-4 col-sm-6 service">
 					<i class="fa fa-gears"></i>
-					<h4>Développement Logiciel</h4>
+					<h4>Dï¿½veloppement Logiciel</h4>
 					<p>JAVA, Python,...</p>
 				</div>
 				<div class="col-md-4 col-sm-6 service">
 					<i class="fa fa-rocket"></i>
 					<h4>Veille Technologique</h4>
-					<p>Matériel, Logiciel, Sécurité,... .</p>
+					<p>Matï¿½riel, Logiciel, Sï¿½curitï¿½,... .</p>
 				</div>
 			</div>
 		</div>
@@ -137,17 +137,17 @@
 				<div class="clearfix"></div>
 				<p>
 					Nous sommes en cours de formation afin d'obtenir un BTS SIO
-					(Systèmes Informatiques aux Organisations) option SLAM (Solutions
-					Logicielles et Applications Métiers).<br> Cette formation nous
-					est dispensée par <a
+					(Systï¿½mes Informatiques aux Organisations) option SLAM (Solutions
+					Logicielles et Applications Mï¿½tiers).<br> Cette formation nous
+					est dispensï¿½e par <a
 						href="http://greta-bretagne.ac-rennes.fr/portail/web/greta-de-bretagne-sud/vannes"
-						target="_blank">le GRETA</a> sur une durée d'un an.<br> Ce
-					diplôme forme des techniciens capables de gérer un parc
-					informatique ou d'administrer un réseau. Leur mission consiste à
-					automatiser et rationnaliser les activités de l'entreprise. Cette
+						target="_blank">le GRETA</a> sur une durï¿½e d'un an.<br> Ce
+					diplï¿½me forme des techniciens capables de gï¿½rer un parc
+					informatique ou d'administrer un rï¿½seau. Leur mission consiste ï¿½
+					automatiser et rationnaliser les activitï¿½s de l'entreprise. Cette
 					formation nous permettra d'entrer dans le monde professionnel comme
-					par exemple: développeur-euse d'applications mobiles,
-					développeur-euse informatique, intégrateur-euse web, technicien-ne
+					par exemple: dï¿½veloppeur-euse d'applications mobiles,
+					dï¿½veloppeur-euse informatique, intï¿½grateur-euse web, technicien-ne
 					de maintenance en informatique, webmestre,...
 			</div>
 			<div class="row">
@@ -159,24 +159,24 @@
 						<h4>Contenus</h4>
 						<p>
 							Solutions informatiques<br> <br> Architecture des
-							ordinateurs<br> Notions de base réseau<br> Exploitation
-							de données<br> Bases de la programmation<br> Support
-							des services et des serveurs<br> Développement
-							d'applications<br> Intégration et adaptation d'un service<br>
-							<br> Solutions logicielles et applications métiers (SLAM)<br>
-							<br> conception, modification et génération de bases de
-							données<br> Programmation orientée objet<br>
-							Développement d'applications pour Base de Données<br>
-							Réalisation de maintenance de composants logiciels<br>
+							ordinateurs<br> Notions de base rï¿½seau<br> Exploitation
+							de donnï¿½es<br> Bases de la programmation<br> Support
+							des services et des serveurs<br> Dï¿½veloppement
+							d'applications<br> Intï¿½gration et adaptation d'un service<br>
+							<br> Solutions logicielles et applications mï¿½tiers (SLAM)<br>
+							<br> conception, modification et gï¿½nï¿½ration de bases de
+							donnï¿½es<br> Programmation orientï¿½e objet<br>
+							Dï¿½veloppement d'applications pour Base de Donnï¿½es<br>
+							Rï¿½alisation de maintenance de composants logiciels<br>
 							Conception et adaptation de solutions applicatives<br> <br>
-							Culture générale et expression<br> Anglais<br>
-							Mathématiques pour l'informatique<br> Analyse économique,
-							managériale et juridique des services informatiques<br>
-							Projets personnalisés encadrés, basés sur une pédagogie de projet
-							et d'apprentissage par problèmes. Les projets sont transversaux
-							et mobilisent l'ensemble des savoirs et compétences acquis et en
+							Culture gï¿½nï¿½rale et expression<br> Anglais<br>
+							Mathï¿½matiques pour l'informatique<br> Analyse ï¿½conomique,
+							managï¿½riale et juridique des services informatiques<br>
+							Projets personnalisï¿½s encadrï¿½s, basï¿½s sur une pï¿½dagogie de projet
+							et d'apprentissage par problï¿½mes. Les projets sont transversaux
+							et mobilisent l'ensemble des savoirs et compï¿½tences acquis et en
 							cours d'acquisition dans les modules de formation et inversement
-							permettent des remédiations.
+							permettent des remï¿½diations.
 						</p>
 
 					</div>
@@ -215,16 +215,16 @@
 			<div class="section-title center">
 				<h2>Voir nos profils</h2>
 				<hr>
-				<p>Voici notre équipe qui a construit ce site, nous venons tous
-					d'horizons différents mais nous avons tous une passion commune !
+				<p>Voici notre Ã©quipe qui a construit ce site, nous venons tous
+					d'horizons diffï¿½rents mais nous avons tous une passion commune !
 					L'informatique !</p>
 			</div>
 			<div id="row">
 				<div class="col-md-3 col-sm-6 team">
 					<div class="thumbnail">
-						<img src="img/team/03.jpg" alt="..." class="img-circle team-img">
+						<a href="melody/melodypage.php"><img src="img/team/03.jpg" alt="..." class="img-circle team-img"></a>
 						<div class="caption">
-							<h3>Mélody</h3>
+							<h3>MÃ©lody</h3>
 							<p>Founder / CEO</p>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 						</div>

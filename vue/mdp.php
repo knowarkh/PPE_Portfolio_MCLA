@@ -57,7 +57,7 @@ else {
 				</div>
 				</form>
 				<br>
-				<a href="index.html">Revenir sur le site</a>
+				<a href="index.php">Revenir sur le site</a>
 			
 		</div>
      <?php

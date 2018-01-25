@@ -32,11 +32,11 @@
 		<div class="container main">
 			<div class="row home">
 				<div id="index_left" class="col-md-6 left">
-					<img class="img-responsive img-rabbit" src="assets/images/home.jpg">
+					<img class="img-responsive img-rabbit" src="assets/images/acceuil.jpg">
 				</div>
 				<div id="index_right" class="col-md-6 text-center right">
 					<div class="logo">
-						<img src="assets/images/logo.png">
+						<a href="../index.php"><img src="assets/images/logo.png"></a>
 						<h4>Melody</h4>
 					</div>
 					<p class="home-description">Bonjour, je suis étudiante et
@@ -71,7 +71,7 @@
 
 				<div class="col-md-6 right" id="about_right">
 					<a href="#index" class="btn btn-rabbit back"> <i
-						class="fa fa-angle-left" aria-hidden="true"></i> Back to home
+						class="fa fa-angle-left" aria-hidden="true"></i> Accueil
 					</a>
 					<div id="watermark">
 						<h2 class="page-title" text-center>A propos</h2>
@@ -113,11 +113,11 @@ echo \DB\Connexion\Connexion::getTableauCompetences(1);
 
 				<div class="col-md-4" id="competences_right">
 					<a href="#index" class="btn btn-rabbit back"> <i
-						class="fa fa-angle-left" aria-hidden="true"></i> Back to Home
+						class="fa fa-angle-left" aria-hidden="true"></i> Accueil
 					</a>
 					<div id="watermark">
 						<h2 class="page-title" text-center>Competences</h2>
-						<div class="marker">w</div>
+						<div class="marker">c</div>
 					</div>
 					<p class='subtitle'>Ceci sont les competences acquise durant ma
 						formation en BTS SIO option SLAM au greta de Vannes ainsi que
@@ -142,6 +142,32 @@ echo \DB\Connexion\Connexion::getTableauCompetences(1);
 	<!-- Competences ends here  -->
 
 
+
+
+<div id="projets_scroll" class="pages ">
+		<!-- projets strats here  -->
+		<div class="container main">
+			<div class="row">
+				<div class="col-md-6 left" id="about_left">
+					<img class="img-responsive img-rabbit" src="assets/images/cvweb.png"> 
+				</div>
+
+				<div class="col-md-6 right" id="projets_right">
+					<a href="#index" class="btn btn-rabbit back"> <i
+						class="fa fa-angle-left" aria-hidden="true"></i> Accueil
+					</a>
+					<div id="watermark">
+						<h2 class="page-title" text-center>Projets</h2>
+						<div class="marker">p</div>
+					</div>
+					<p class='subtitle'>Voici les deux projets que j'ai choisi</p>
+					<p class="info">"Premier projet description"</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- projets ends here -->
+
 	<div id="contact_scroll" class="pages">
 		<!-- Contact starts here -->
 		<div class="container main">
@@ -159,8 +185,7 @@ echo \DB\Connexion\Connexion::getTableauCompetences(1);
 						<h2 class="page-title" text-center>Contact</h2>
 						<div class="marker">c</div>
 					</div>
-					<p class='subtitle'>I'm based in cheltenham in the UK, not far
-						from Bristol, Birmingham, Oxford and Swindom. Drop me a line.</p>
+					<p class='subtitle'>Je me trouve en ce moment à Vannes en Bretagne. Une question, une offre de contrat en professionalisation, commentaire? Remplissez ce formulaire!</p>
 					<!-- form -->
 					<form class="form_edit">
 						<div class="form-group">

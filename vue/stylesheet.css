@@ -1,19 +1,18 @@
 
 .tableauGeneral {
+	color: white;
 	border-collapse: collapse;
-	background-color: #FCFAE1;
+	background-color: #0dbf9b;
 	/* Les bordures du tableau seront collées (plus joli) */
 }
 
+
+
 .tableauGeneral th {
-	background-color: #bb9e7d;
-}
-.domaineActivite
-{
-	color: #bb9e7d;
+	background-color: #0fd7af;
 }
 
 .tableauCompetence
 {
-	border-bottom: thin solid #bb9e7d;
+	border-bottom: thin solid #eef6f4;
 }
