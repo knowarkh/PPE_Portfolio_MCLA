@@ -6,7 +6,7 @@ namespace DB\Connexion {
         static function getInstance() {
             static $dbh = NULL;
             if ($dbh==NULL) {
-                $dsn = "mysql:host=localhost:3306;dbname=competence";
+                $dsn = "mysql:host=localhost:3306;dbname=ppe_competence";
                 $username = "root";
                 $password = "";
 
