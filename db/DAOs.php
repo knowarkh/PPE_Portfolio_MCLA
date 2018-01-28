@@ -421,8 +421,10 @@ namespace DAO\Ressource
             
             $row = $stmt->fetch();
             $num = $row["idR"];
+            $nom = $row['nom'];
             $chemin = $row["chemin"];
             $typeFichier = $row["typeFichier"];
+            $tailleFichier =$row['tailleFichier'];
             
             $rep = new \Competence\Ressource\Ressource($chemin, $typeFichier);
             $rep->setIdR($num);
@@ -431,16 +433,20 @@ namespace DAO\Ressource
         
         public function update($objet)
         {
-            $sql = "UPDATE $this->table SET chemin =:chemin, typeFichier =:typeFichier WHERE $this->key=:id";
+            $sql = "UPDATE $this->table SET nom=:nom,chemin =:chemin, typeFichier =:typeFichier, tailleFichier =:tailleFichier WHERE $this->key=:id";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
             $id = $objet->getIdR();
+            $nom = $objet->getNom();
             $chemin = $objet->getChemin();
             $typeFichier = $objet->getTypeFichier();
+            $tailleFichier= $objet->getTailleFichier();
             
             $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':chemin', $chemin);
             $stmt->bindParam(':typeFichier', $typeFichier);
+            $stmt->bindParam(':tailleFichier', $tailleFichier);
             
             $stmt->execute();
         }
@@ -458,17 +464,22 @@ namespace DAO\Ressource
         
         public function create($objet)
         {
-            $sql = "INSERT INTO $this->table (chemin, typeFichier) VALUES (:chemin, :typeFichier);";
+            $sql = "INSERT INTO $this->table (nom, chemin, typeFichier, tailleFichier) VALUES (:nom,:chemin, :typeFichier, :tailleFichier);";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
+            $nom = $objet->getNom();
             $chemin = $objet->getChemin();
             $typeFichier = $objet->getTypeFichier();
+            $tailleFichier = $objet->getTailleFichier();
+            $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':chemin', $chemin);
             $stmt->bindParam(':typeFichier', $typeFichier);
+            $stmt->bindParam(':tailleFichier', $tailleFichier);
             $stmt->execute();
             
             $id = $this->getLastKey();
             $objet->setIdR($id);
+            
         }
     }   
 }
