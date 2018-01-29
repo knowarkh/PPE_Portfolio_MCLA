@@ -6,10 +6,10 @@ namespace DB\Connexion {
         static function getInstance() {
             static $dbh = NULL;
             if ($dbh==NULL) {
-                $dsn = "mysql:host=localhost:3306;dbname=competence";
+                $dsn = "mysql:host=localhost:3306;dbname=ppe_competence";
                 $username = "root";
                 $password = "";
-
+                
                 $options = array (
                     \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
                 );
@@ -35,9 +35,9 @@ namespace DB\Connexion {
             return $rep . "</table>";
         }
         
-        //Affiche le tableau des activités validées
+        //Affiche le tableau des activitï¿½s validï¿½es
         static function getTableauCompetences($idStagiaire){
-            //requête mySQL permettant de récupérer les données nécéssaires au tableau
+            //requï¿½te mySQL permettant de rï¿½cupï¿½rer les donnï¿½es nï¿½cï¿½ssaires au tableau
             $sql = "SELECT DISTINCT activite.processus, activite.domaineActivite, activite.denomination, competence.description, validation.contexte, ressource.chemin
 FROM validation, competence, preuve, ressource,activite
 WHERE validation.idS=$idStagiaire
@@ -54,7 +54,7 @@ AND activite.idA = competence.idA;
             
             
             foreach (Connexion::getInstance()->query($sql) as $row) {
-                //Création du tableau activité dans un ligne du ableau général si nouvelle activité, sinon ne rien faire
+                //Crï¿½ation du tableau activitï¿½ dans un ligne du ableau gï¿½nï¿½ral si nouvelle activitï¿½, sinon ne rien faire
                 if ($oldActivite != $row["denomination"]){
                     if ($oldActivite != ""){
                         $rep.="</td></tr></table></td></tr>";
