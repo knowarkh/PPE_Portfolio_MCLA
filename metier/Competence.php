@@ -332,14 +332,16 @@ namespace Competence\Ressource
         private $idR = -1;
         
         private $nom = "";
-        
+
         private $chemin = "../C:/..";
         
         private $typeFichier = "texte";
         
         private $tailleFichier =-1;
-        
-        function __construct($nom, $chemin, $typeFichier, $tailleFichier)
+
+
+        function __construct($nom,$chemin, $typeFichier, $tailleFichier)
+
         {
             $this->nom=$nom;
             $this->chemin = $chemin;
@@ -351,6 +353,7 @@ namespace Competence\Ressource
         {
             return $this->idR;
         }
+
         
         /**
          * @return string
@@ -384,6 +387,39 @@ namespace Competence\Ressource
             $this->tailleFichier = $tailleFichier;
         }
         
+
+        /**
+         * @return string
+         */
+        public function getNom()
+        {
+            return $this->nom;
+        }
+    
+        /**
+         * @return number
+         */
+        public function getTailleFichier()
+        {
+            return $this->tailleFichier;
+        }
+    
+        /**
+         * @param string $nom
+         */
+        public function setNom($nom)
+        {
+            $this->nom = $nom;
+        }
+    
+        /**
+         * @param number $tailleFichier
+         */
+        public function setTailleFichier($tailleFichier)
+        {
+            $this->tailleFichier = $tailleFichier;
+        }
+    
         public function getChemin()
         {
             return $this->chemin;
