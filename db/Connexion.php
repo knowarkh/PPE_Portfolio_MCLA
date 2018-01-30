@@ -35,7 +35,7 @@ namespace DB\Connexion {
             return $rep . "</table>";
         }
         
-        
+
         //TODO fonction à améliorer en utilisant les objets du métier
         //Affiche le tableau des activit�s valid�es
         static function getTableauCompetences($idStagiaire){
@@ -50,7 +50,7 @@ AND ressource.idR= preuve.idR
 AND activite.idA = competence.idA;
 ";
             
-            $rep = "<table class=\"tableauGeneral\" class=\"container\"><tr class=\"row\"><th class=\"col-md-3\">Activite</th><th>Competence</th></tr>";
+            $rep = "<table class=\"tableauGeneral\"><tr class=\"row\"><th class=\"col-md-3\">Activite</th><th class=\"col-md-9\">Competence</th></tr>";
             $oldActivite="";
             $oldCompetence="";
             
@@ -62,11 +62,11 @@ AND activite.idA = competence.idA;
                         $rep.="</td></tr></table></td></tr>";
                     
                    }
-                    $rep.="<tr><td class=\"domaineActivite\">".$row["processus"]."<br/>".$row["domaineActivite"]."</td></tr>";
-                    $rep.="<tr><td>".$row['denomination']."</td>";
+                    $rep.="<tr class=\"row\"><td class=\"domaineActivite\" class=\"col-md-9\">".$row["processus"]."<br/>".$row["domaineActivite"]."</td></tr>";
+                    $rep.="<tr class=\"row\"><td class=\"col-md-3\">".$row['denomination']."</td>";
                     $rep.="<td>";
                     $rep.="<table class=\"tableauCompetence\">";
-                    $rep.="<tr><td>".$row["description"]."</td>";
+                    $rep.="<tr class=\"row\"><td class=\"col-md-6\">".$row["description"]."</td>";
                     $rep.="<td>".$row["contexte"]."<br/><a href=\"".$row["chemin"]."\">lien</a>";
                     
                     $oldActivite= $row["denomination"];
@@ -74,7 +74,7 @@ AND activite.idA = competence.idA;
                 }
                 else{
                     if ($oldCompetence != $row["description"]){
-                        $rep.="</td></tr><tr><td>".$row["description"]."</td>";
+                        $rep.="</td></tr><tr class=\"row\"><td>".$row["description"]."</td>";
                         $rep.="<td>".$row["contexte"]."<br/><a href=\"".$row["chemin"]."\">lien</a>";
                         
                         $oldCompetence=["description"];

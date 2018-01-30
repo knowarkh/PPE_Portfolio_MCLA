@@ -34,7 +34,7 @@
 // {
 ?> 
 	<div class="section-title center">
-		<strong>Identification</strong>
+		<h2>Identification</h2>
 		<!-- 	<br> <br> <a href="hashageTest.php">Revenir au formulaire</a> -->
 <div class="container">
 			<strong>Veuillez entrer vos identifiants pour vous connecter</strong>
@@ -54,6 +54,9 @@
 					</div>
 				</div>
 			</form>
+			<div class="row">
+			<div class="col-sm-3 col-md-4  col-sm-offset-6 col-md-offset-8"><a href="inscription.php"><button>S'inscrire</button></a></div></div>
+			
 			<br> <a href="index.php">Revenir sur le site</a>
 		</div>   
 </div>

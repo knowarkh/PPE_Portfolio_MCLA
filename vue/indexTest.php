@@ -10,13 +10,13 @@
 
 <?php
 
-
 include ("../db/Connexion.php");
 include ("../db/DAOs.php");
 
 //---test CRUD STAGIAIRE---
 //createStagiaire();
-readStagiaire();
+
+//readStagiaire();
 
 
 
@@ -69,7 +69,7 @@ readStagiaire();
 function createStagiaire()
 {
     $daoStagiaire = new \DAO\Stagiaire\StagiaireDAO();
-    $stag = new \Competence\Stagiaire\Stagiaire("Macron", "Manu", "manu.macron@elysee.com");
+    $stag = new \Competence\Stagiaire\Stagiaire("Macron", "Manu", "manu.macron@elysee.com","motDe");
     echo $stag;
     $daoStagiaire->create($stag);
     echo "stagiaire cr�� : $stag";

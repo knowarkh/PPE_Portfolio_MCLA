@@ -37,6 +37,12 @@ namespace DAO
             $id = $row["max"];
             return $id;
         }
+        
+        function selectEtoile(){
+            
+            
+            
+        }
 
         function afficheDonnees()
         {
@@ -88,9 +94,11 @@ namespace DAO\Stagiaire
                 $nom = $row["nom"];
                 $prenom = $row["prenom"];
                 $mail = $row["mail"];
+                $mdp= $row["mdp"];
                 
-                $rep = new \Competence\Stagiaire\Stagiaire($nom, $prenom, $mail);
+                $rep = new \Competence\Stagiaire\Stagiaire($nom, $prenom, $mail,$mdp);
                 $rep->setIdS($num);
+            
                 // ajout dans le tableau de données
                 $this->donnees[$id] = $rep;
                 // echo $this->donnees[$id];

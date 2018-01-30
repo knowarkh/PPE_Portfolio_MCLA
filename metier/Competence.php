@@ -29,21 +29,6 @@ namespace Competence\Stagiaire
             $this->mdp = $mdp;
         }
 
-        /**
-         * @return mixed
-         */
-        public function getMdp()
-        {
-            return $this->mdp;
-        }
-        
-        /**
-         * @param mixed $mdp
-         */
-        public function setMdp($mdp)
-        {
-            $this->mdp = $mdp;
-        }
     
         public function getValidations()
         {
@@ -443,7 +428,7 @@ namespace Competence\Ressource
         
         private $idR = -1;
         
-        private $nom = "";
+        private $titre = "";
 
         private $chemin = "../C:/..";
         
@@ -452,10 +437,10 @@ namespace Competence\Ressource
         private $tailleFichier =-1;
 
 
-        function __construct($nom,$chemin, $typeFichier, $tailleFichier)
+        function __construct($titre,$chemin, $typeFichier, $tailleFichier)
 
         {
-            $this->nom=$nom;
+            $this->titre=$titre;
             $this->chemin = $chemin;
             $this->typeFichier = $typeFichier;
             $this->tailleFichier=$tailleFichier;
@@ -470,9 +455,9 @@ namespace Competence\Ressource
         /**
          * @return string
          */
-        public function getNom()
+        public function getTitre()
         {
-            return $this->nom;
+            return $this->titre;
         }
         
         /**
@@ -486,9 +471,9 @@ namespace Competence\Ressource
         /**
          * @param string $nom
          */
-        public function setNom($nom)
+        public function setTitre($titre)
         {
-            $this->nom = $nom;
+            $this->titre = $titre;
         }
         
         /**
@@ -505,32 +490,20 @@ namespace Competence\Ressource
          */
         public function getNom()
         {
-            return $this->nom;
+            return $this->titre;
         }
     
-        /**
-         * @return number
-         */
-        public function getTailleFichier()
-        {
-            return $this->tailleFichier;
-        }
+
     
         /**
          * @param string $nom
          */
         public function setNom($nom)
         {
-            $this->nom = $nom;
+            $this->titre = $nom;
         }
     
-        /**
-         * @param number $tailleFichier
-         */
-        public function setTailleFichier($tailleFichier)
-        {
-            $this->tailleFichier = $tailleFichier;
-        }
+ 
     
         public function getChemin()
         {

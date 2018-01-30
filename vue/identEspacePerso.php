@@ -25,8 +25,9 @@
 <body>
 <?php
 // session_start();
-include ("../db/Connexion.php");
-include ("../db/DAOs.php");
+// include ("../db/Connexion.php");
+ include ("../db/DAOs.php");
+ //include ('../metier/Competences.php');
 
 //---Test POST et redirection---
 // if (isset($_POST['mailId'])) {

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<title>Connexion à vos données</title>
+<title>Connexion ï¿½ vos donnï¿½es</title>
 
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -25,12 +25,12 @@
 <body>
 	<div class="section-title center">
 	<?php if (isset($_POST['password']) and isset($_POST['pseudo'])) {
-    // on vérifie si "kangourou" est le bon mdp
+    // on vï¿½rifie si "kangourou" est le bon mdp
     if ($_POST['password'] == "btssio") {
         $pseudo = $_POST['pseudo'];
         echo "c'est ta page $pseudo";
     } else {
-        ?><strong>Veuillez insérer un mdp valide</strong>
+        ?><strong>Veuillez insï¿½rer un mdp valide</strong>
 	<br> <br> <a href="mdp.php">Revenir au formulaire</a>
     <?php
     }
@@ -38,7 +38,7 @@
 else {
     ?><div class="container">
     <strong>Veuillez entrer vos identifiants pour vous connecter</strong>
-    <form action="mdp.php" method="post" accept-charset="utf-8">
+    <form action="identification.php" method="post" accept-charset="utf-8">
 			<div class="row">
 			<br>
 				<div class="col-md-4 col-sm-3">

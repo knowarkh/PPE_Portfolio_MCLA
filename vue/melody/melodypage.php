@@ -99,7 +99,6 @@
 			<div class="row">
 				<div class="col-md-8" id="competences_left">
 				<?php include ("../../db/Connexion.php");
-
 echo \DB\Connexion\Connexion::getTableauCompetences(1);
  ?>
 					<!--  <div id="owl-demo" class="owl-carousel owl-theme">-->

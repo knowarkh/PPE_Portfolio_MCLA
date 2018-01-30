@@ -69,7 +69,7 @@
 							équipe</a></li>
 					<li><a href="#contact-section" class="page-scroll">Contact</a></li>
 					<li> <!-- <a href="#connect" class="btn-connect">Se connecter</a> --> 
-					<a href="mdp.php" class="btn-connect">Se connecter</a>
+					<a href="identification.php" class="btn-connect">Se connecter</a>
 					</li>
 				</ul>
 			</div>
