@@ -3,7 +3,8 @@ namespace DAO
 {
 
     include ("../metier/Competence.php");
-
+    include ("Connexion.php");
+ 
     abstract class DAO
     {
 

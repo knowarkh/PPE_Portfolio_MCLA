@@ -38,14 +38,14 @@
 		<!-- 	<br> <br> <a href="hashageTest.php">Revenir au formulaire</a> -->
 <div class="container">
 			<strong>Veuillez entrer vos identifiants pour vous connecter</strong>
-			<form action="identification.php" method="post" accept-charset="utf-8">
+			<form action="identEspacePerso.php" method="post" accept-charset="utf-8">
 				<div class="row">
 					<br>
 					<div class="col-md-4 col-sm-3">
 						<label> Mail : <input type="email" name="mailId">
 						</label>
 					</div>
-					<div class="col-md-4 col-sm-3">
+					<div class="col-md-4 cols-sm-3">
 						<label> Mot de passe : <input type="password" name="mdpId">
 						</label>
 					</div>

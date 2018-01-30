@@ -47,6 +47,7 @@ else {
         $nom = (htmlspecialchars($_POST['nom']));
         $prenom = (htmlspecialchars($_POST['prenom']));
         $mail = (htmlspecialchars($_POST['mail']));
+        
         createUtilisteur($nom, $prenom, $mail, $mdp1); 
         ?>
         <p>Votre compte Stagiaire a bien été crée ! Veuillez maintenat accéder à la page de connexion</p>
