@@ -66,11 +66,12 @@ namespace DAO\Stagiaire
             parent::__construct("idS", "STAGIAIRE");
         }
 
-        // ---Methodes CRUD table STAGIAIRE---
+        // ---Methodes  CRUD table STAGIAIRE---
         public function read($id)
         {
             $rep = null;
             
+
             if (key_exists($id, $this->donnees)) {
                 $rep = $this->donnees[$id];
                 // echo "utilisation du tableau";
@@ -94,12 +95,15 @@ namespace DAO\Stagiaire
                 $this->donnees[$id] = $rep;
                 // echo $this->donnees[$id];
             }
+
             return $rep;
         }
 
         public function update($objet)
         {
+
             $sql = "UPDATE $this->table SET nom =:nom, prenom =:prenom , mail =:mail, mdp =:mdp WHERE $this->key=:id";
+
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
             $id = $objet->getIdS();
@@ -133,7 +137,9 @@ namespace DAO\Stagiaire
 
         public function create($objet)
         {
+
             $sql = "INSERT INTO $this->table (nom,prenom,mail,mdp) VALUES (:nom,:prenom,:mail, :mdp);";
+
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
             $nom = $objet->getNom();

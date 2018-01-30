@@ -8,9 +8,6 @@
 <body>
 
 
-
-
-
 <?php
 
 
@@ -20,6 +17,7 @@ include ("../db/DAOs.php");
 //---test CRUD STAGIAIRE---
 //createStagiaire();
 readStagiaire();
+
 
 
 //updateStagiaire();
@@ -65,7 +63,7 @@ readStagiaire();
 //---TABLE STAGIAIRE---
 
 /**test create stagiaire
- *
+ *avant attribut mdp
  */
 
 function createStagiaire()
@@ -85,6 +83,7 @@ function readStagiaire()
 {
     $daoStag = new \DAO\Stagiaire\StagiaireDAO ();
     $stag=$daoStag->read(1);
+
     echo "trouv� : $stag";
     $stag=$daoStag->read(1);
     echo "trouv� : $stag";
@@ -383,12 +382,22 @@ include ("../db/Connexion.php");
 // $test="bonjour tout le monde";
 // echo $test;
 
+
 // $daoStagiaire = new \DAO\Stagiaire\StagiaireDAO ();
 // $stag=$daoStagiaire->read(1);
 // echo "avant: $stag";
 // $daoStagiaire->delete($stag);
 // echo "effac� : $stag";
 
+
+
+//---Test hashage---
+// $hash = '$2y$10$YHCt9Jkh406sn6JAXwp8NeW22G.51cPi17IRl07moU92tKEUz4xHK';
+// if (password_verify('passe', $hash)) {
+//     echo 'Le mot de passe est valide !';
+// } else {
+//     echo 'Le mot de passe est invalide.';
+// }
 
 
 echo DB\Connexion\Connexion::getTableauCompetences(1);
