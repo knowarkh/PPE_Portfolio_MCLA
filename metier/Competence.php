@@ -339,7 +339,7 @@ namespace Competence\Ressource
         
         private $tailleFichier =-1;
         
-        function __construct($nom,$chemin, $typeFichier, $tailleFichier)
+        function __construct($nom, $chemin, $typeFichier, $tailleFichier)
         {
             $this->nom=$nom;
             $this->chemin = $chemin;

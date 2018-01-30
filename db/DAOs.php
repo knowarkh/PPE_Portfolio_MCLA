@@ -48,7 +48,7 @@ namespace DAO\Stagiaire
             parent::__construct("idS", "STAGIAIRE");
         }
 
-        // ---Methodes CRUD table STAGIAIRE---
+        // ---Methodes  CRUD table STAGIAIRE---
         public function read($id)
         {
             $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
