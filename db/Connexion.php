@@ -35,6 +35,8 @@ namespace DB\Connexion {
             return $rep . "</table>";
         }
         
+        
+        //TODO fonction à améliorer en utilisant les objets du métier
         //Affiche le tableau des activit�s valid�es
         static function getTableauCompetences($idStagiaire){
             //requ�te mySQL permettant de r�cup�rer les donn�es n�c�ssaires au tableau
@@ -48,7 +50,7 @@ AND ressource.idR= preuve.idR
 AND activite.idA = competence.idA;
 ";
             
-            $rep = "<table class=\"tableauGeneral\"><tr><th>Activite</th><th>Competence</th></tr>";
+            $rep = "<table class=\"tableauGeneral\" class=\"container\"><tr class=\"row\"><th class=\"col-md-3\">Activite</th><th>Competence</th></tr>";
             $oldActivite="";
             $oldCompetence="";
             
@@ -58,7 +60,8 @@ AND activite.idA = competence.idA;
                 if ($oldActivite != $row["denomination"]){
                     if ($oldActivite != ""){
                         $rep.="</td></tr></table></td></tr>";
-                    }
+                    
+                   }
                     $rep.="<tr><td class=\"domaineActivite\">".$row["processus"]."<br/>".$row["domaineActivite"]."</td></tr>";
                     $rep.="<tr><td>".$row['denomination']."</td>";
                     $rep.="<td>";

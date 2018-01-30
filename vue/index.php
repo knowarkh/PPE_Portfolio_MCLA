@@ -30,7 +30,7 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300'
 	rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="js/modernizr.custom.js"></script>
+<script type="text/javascript" src="../js/modernizr.custom.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -329,19 +329,19 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+	<script type="text/javascript" src="../js/jquery.1.11.1.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/SmoothScroll.js"></script>
-	<script type="text/javascript" src="js/jquery.counterup.js"></script>
-	<script type="text/javascript" src="js/waypoints.js"></script>
-	<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
-	<script type="text/javascript" src="js/jquery.isotope.js"></script>
-	<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
-	<script type="text/javascript" src="js/contact_me.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/SmoothScroll.js"></script>
+	<script type="text/javascript" src="../js/jquery.counterup.js"></script>
+	<script type="text/javascript" src="../js/waypoints.js"></script>
+	<script type="text/javascript" src="../js/jquery.prettyPhoto.js"></script>
+	<script type="text/javascript" src="../js/jquery.isotope.js"></script>
+	<script type="text/javascript" src="../js/jqBootstrapValidation.js"></script>
+	<script type="text/javascript" src="../js/contact_me.js"></script>
 
 	<!-- Javascripts
     ================================================== -->
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
 </body>
 </html>
