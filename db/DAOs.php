@@ -25,7 +25,7 @@ namespace DAO
             $this->table = $table;
         }
 
-        // ---Récupère la dernière clé créé par l'auto-increment---
+        // ---Rï¿½cupï¿½re la derniï¿½re clï¿½ crï¿½ï¿½ par l'auto-increment---
         function getLastKey()
         {
             $sql = "SELECT MAX($this->key) as max FROM $this->table;";
@@ -61,25 +61,27 @@ namespace DAO\Stagiaire
             $nom = $row["nom"];
             $prenom = $row["prenom"];
             $mail = $row["mail"];
-            $rep = new \Competence\Stagiaire\Stagiaire($nom, $prenom, $mail);
+            $rep = new \Competence\Stagiaire\Stagiaire($nom, $prenom, $mail, $mdp);
             $rep->setIdS($num);
             return $rep;
         }
 
         public function update($objet)
         {
-            $sql = "UPDATE $this->table SET nom =:nom, prenom =:prenom , mail =:mail WHERE $this->key=:id";
+            $sql = "UPDATE $this->table SET nom =:nom, prenom =:prenom , mail =:mail , mdp =:mdp WHERE $this->key=:id";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
             $id = $objet->getIdS();
             $nom = $objet->getNom();
             $prenom = $objet->getPrenom();
             $mail = $objet->getMail();
+            $mdp = $objet->getMdp();
             
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':prenom', $prenom);
             $stmt->bindParam(':mail', $mail);
+            $stmt->bindParam(':mdp', $mdp);
             
             $stmt->execute();
         }
@@ -97,15 +99,17 @@ namespace DAO\Stagiaire
 
         public function create($objet)
         {
-            $sql = "INSERT INTO $this->table (nom,prenom,mail) VALUES (:nom,:prenom,:mail);";
+            $sql = "INSERT INTO $this->table (nom,prenom,mail,mdp) VALUES (:nom,:prenom,:mail,:mdp);";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
             $nom = $objet->getNom();
             $prenom = $objet->getPrenom();
             $mail = $objet->getMail();
+            $mdp = $objet->getMdp();
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':prenom', $prenom);
             $stmt->bindParam(':mail', $mail);
+            $stmt->bindParam(':mdp', $mdp);
             $stmt->execute();
             
             $id = $this->getLastKey();
@@ -421,8 +425,10 @@ namespace DAO\Ressource
             
             $row = $stmt->fetch();
             $num = $row["idR"];
+            $nom = $row['nom'];
             $chemin = $row["chemin"];
             $typeFichier = $row["typeFichier"];
+            $tailleFichier =$row['tailleFichier'];
             
             $rep = new \Competence\Ressource\Ressource($chemin, $typeFichier);
             $rep->setIdR($num);
@@ -431,16 +437,20 @@ namespace DAO\Ressource
         
         public function update($objet)
         {
-            $sql = "UPDATE $this->table SET chemin =:chemin, typeFichier =:typeFichier WHERE $this->key=:id";
+            $sql = "UPDATE $this->table SET nom=:nom,chemin =:chemin, typeFichier =:typeFichier, tailleFichier =:tailleFichier WHERE $this->key=:id";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
             $id = $objet->getIdR();
+            $nom = $objet->getNom();
             $chemin = $objet->getChemin();
             $typeFichier = $objet->getTypeFichier();
+            $tailleFichier= $objet->getTailleFichier();
             
             $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':chemin', $chemin);
             $stmt->bindParam(':typeFichier', $typeFichier);
+            $stmt->bindParam(':tailleFichier', $tailleFichier);
             
             $stmt->execute();
         }
@@ -458,19 +468,24 @@ namespace DAO\Ressource
         
         public function create($objet)
         {
-            $sql = "INSERT INTO $this->table (chemin, typeFichier) VALUES (:chemin, :typeFichier);";
+            $sql = "INSERT INTO $this->table (nom, chemin, typeFichier, tailleFichier) VALUES (:nom,:chemin, :typeFichier, :tailleFichier);";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
+            $nom = $objet->getNom();
             $chemin = $objet->getChemin();
             $typeFichier = $objet->getTypeFichier();
+            $tailleFichier = $objet->getTailleFichier();
+            $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':chemin', $chemin);
             $stmt->bindParam(':typeFichier', $typeFichier);
+            $stmt->bindParam(':tailleFichier', $tailleFichier);
             $stmt->execute();
             
             $id = $this->getLastKey();
             $objet->setIdR($id);
+            
         }
-    }   
+    }
 }
 namespace DAO\Validation
 {

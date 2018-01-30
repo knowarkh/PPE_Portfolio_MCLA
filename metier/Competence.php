@@ -12,14 +12,34 @@ namespace Competence\Stagiaire
         private $prenom = "Arnaud";
 
         private $mail = "collet.arn@gmail.com";
+        
+        private $mdp;
 
-        function __construct($nom, $prenom, $mail)
+        function __construct($nom, $prenom, $mail, $mdp)
         {
             $this->nom = $nom;
             $this->prenom = $prenom;
             $this->mail = $mail;
+            $this->mdp = $mdp;
         }
 
+        
+        /**
+         * @return mixed
+         */
+        public function getMdp()
+        {
+            return $this->mdp;
+        }
+    
+        /**
+         * @param mixed $mdp
+         */
+        public function setMdp($mdp)
+        {
+            $this->mdp = $mdp;
+        }
+    
         public function getIdS()
         {
             return $this->idS;
@@ -308,49 +328,87 @@ namespace Competence\Ressource
 
     class Ressource
     {
-
+        
         private $idR = -1;
-
+        
+        private $nom = "";
+        
         private $chemin = "../C:/..";
-
+        
         private $typeFichier = "texte";
-
-        function __construct($chemin, $typeFichier)
+        
+        private $tailleFichier =-1;
+        
+        function __construct($nom,$chemin, $typeFichier, $tailleFichier)
         {
+            $this->nom=$nom;
             $this->chemin = $chemin;
             $this->typeFichier = $typeFichier;
+            $this->tailleFichier=$tailleFichier;
         }
-
+        
         public function getIdR()
         {
             return $this->idR;
         }
-
+        
+        /**
+         * @return string
+         */
+        public function getNom()
+        {
+            return $this->nom;
+        }
+        
+        /**
+         * @return number
+         */
+        public function getTailleFichier()
+        {
+            return $this->tailleFichier;
+        }
+        
+        /**
+         * @param string $nom
+         */
+        public function setNom($nom)
+        {
+            $this->nom = $nom;
+        }
+        
+        /**
+         * @param number $tailleFichier
+         */
+        public function setTailleFichier($tailleFichier)
+        {
+            $this->tailleFichier = $tailleFichier;
+        }
+        
         public function getChemin()
         {
             return $this->chemin;
         }
-
+        
         public function getTypeFichier()
         {
             return $this->typeFichier;
         }
-
+        
         public function setIdR($idR)
         {
             $this->idR = $idR;
         }
-
+        
         public function setChemin($chemin)
         {
             $this->chemin = $chemin;
         }
-
+        
         public function setTypeFichier($typeFichier)
         {
             $this->typeFichier = $typeFichier;
         }
-
+        
         function __toString()
         {
             return $rep = "<div classe=\"ressource\">$this->idR $this->chemin $this->typeFichier</div>";

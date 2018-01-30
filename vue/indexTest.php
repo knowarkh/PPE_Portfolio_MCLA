@@ -8,9 +8,6 @@
 <body>
 
 
-
-
-
 <?php
 
 
@@ -19,7 +16,7 @@ include ("../db/DAOs.php");
 
 //---test CRUD STAGIAIRE---
 //createStagiaire();
-// readStagiaire();
+readStagiaire();
 // updateStagiaire();
 // deleteStagiaire();
 
@@ -63,7 +60,7 @@ include ("../db/DAOs.php");
 //---TABLE STAGIAIRE---
 
 /**test create stagiaire
- *
+ *avant attribut mdp
  */
 
 function createStagiaire()
@@ -72,7 +69,7 @@ function createStagiaire()
     $stag = new \Competence\Stagiaire\Stagiaire("Macron", "Manu", "manu.macron@elysee.com");
     echo $stag;
     $daoStagiaire->create($stag);
-    echo "stagiaire créé : $stag";
+    echo "stagiaire crï¿½ï¿½ : $stag";
 }
 
 /**test read stagiaire
@@ -83,7 +80,7 @@ function readStagiaire()
 {
     $daoStag = new \DAO\Stagiaire\StagiaireDAO ();
     $stag=$daoStag->read(1);
-    echo "trouvé : $stag";
+    echo "trouvÃ© : $stag";
 }
 
 /**test update stagiaire
@@ -109,7 +106,7 @@ function deleteStagiaire()
     $stag = $daoStagiaire->read(3);
     echo "avant: $stag";
     $daoStagiaire->delete($stag);
-    echo "effacé : $stag";
+    echo "effacï¿½ : $stag";
 }
 
 //---TABLE ACTIVITE---
@@ -124,7 +121,7 @@ function createActivite()
     $activite = new \Competence\Activite\Activite("luge", "descente", "station");
     echo $activite;
     $daoAct->create($activite);
-    echo "activite créé : $activite";
+    echo "activite crï¿½ï¿½ : $activite";
 }
 
 /**test read activite
@@ -135,7 +132,7 @@ function readActivite()
 {
     $daoAct = new \DAO\Activite\ActiviteDAO();
     $activite=$daoAct->read(1);
-    echo "trouvé : $activite";
+    echo "trouvï¿½ : $activite";
 }
 
 /**test update activite
@@ -160,7 +157,7 @@ function deleteActivite()
     $daoAct = new \DAO\Activite\ActiviteDAO();
     $activite=$daoAct->read(3);
     $daoAct->delete($activite);
-    echo "effacé : $activite";
+    echo "effacï¿½ : $activite";
 }
 
 //---TABLE COMPETENCE---
@@ -175,7 +172,7 @@ function createComp()
     $comp = new \Competence\Competence\Competence(2, "piste noire");
     echo $comp;
     $daoComp->create($comp);
-    echo "competence créé : $comp";
+    echo "competence crï¿½ï¿½ : $comp";
 }
 
 /**test read competence
@@ -186,7 +183,7 @@ function readComp()
 {
     $daoComp = new \DAO\Competence\CompetenceDAO();
     $comp=$daoComp->read(1);
-    echo "trouvé : $comp";
+    echo "trouvï¿½ : $comp";
 }
 
 /**test update competence
@@ -212,7 +209,7 @@ function deleteComp()
     $comp=$daoComp->read(3);
     echo "avant: $comp";
     $daoComp->delete($comp);
-    echo "effacé : $comp";
+    echo "effacï¿½ : $comp";
 }
 
 //---TABLE PROJET---
@@ -227,7 +224,7 @@ function createProj()
     $proj = new \Competence\Projet\Projet("PPE Android");
     echo $proj;
     $daoProj->create($proj);
-    echo "projet créé : $proj";
+    echo "projet crï¿½ï¿½ : $proj";
 }
 
 /**test read projet
@@ -238,7 +235,7 @@ function readProjet()
 {
     $daoProj = new \DAO\Projet\ProjetDAO();
     $proj=$daoProj->read(1);
-    echo "trouvé : $proj";
+    echo "trouvï¿½ : $proj";
 }
 
 /**test update projet
@@ -263,7 +260,7 @@ function deleteProj()
     $daoProj = new \DAO\Projet\ProjetDAO();
     $proj=$daoProj->read(3);
     $daoProj->delete($proj);
-    echo "effacé : $proj";
+    echo "effacï¿½ : $proj";
 }
     
 //---TABLE DOCUMENTATION---
@@ -274,14 +271,14 @@ function createDoc()
     $doc = new \Competence\Documentation\Documentation(2,4,"Ceci est une description");
     echo $doc;
     $daoDoc->create($doc);
-    echo "documentation créé : $doc";
+    echo "documentation crï¿½ï¿½ : $doc";
 }
 
 function readDoc()
 {
     $daoDoc = new \DAO\Documentation\DocumentationDAO();
     $doc=$daoDoc->read(1);
-    echo "trouvé : $doc";
+    echo "trouvï¿½ : $doc";
 }
 
 function updateDoc()
@@ -298,7 +295,7 @@ function deleteDoc()
     $daoDoc = new \DAO\Documentation\DocumentationDAO();
     $doc=$daoDoc->read(3);
     $daoDoc->delete($doc);
-    echo "effacé : $doc";
+    echo "effacï¿½ : $doc";
 }
 
 //---TABLE RESSOURCE---
@@ -309,14 +306,14 @@ function createRess()
     $ress = new \Competence\Ressource\Ressource("../Doc/Fichier.pdf", "image");
     echo $ress;
     $daoRess->create($ress);
-    echo "ressource créé : $ress";
+    echo "ressource crï¿½ï¿½ : $ress";
 }
 
 function readRess()
 {
     $daoRess = new \DAO\Ressource\RessourceDAO();
     $ress=$daoRess->read(5);
-    echo "trouvé : $ress";
+    echo "trouvï¿½ : $ress";
 }
 
 function updateRess()
@@ -333,7 +330,7 @@ function deleteRess()
     $daoRess = new \DAO\Ressource\RessourceDAO();
     $ress=$daoRess->read(3);
     $daoRess->delete($ress);
-    echo "effacé : $ress";
+    echo "effacï¿½ : $ress";
 }
 
 //---TABLE VALIDATION---
@@ -344,14 +341,14 @@ function createVal()
     $val = new \Competence\Validation\Validation(4, 6, "TP SI");
     echo $val;
     $daoVal->create($val);
-    echo "val créé : $val";
+    echo "val crï¿½ï¿½ : $val";
 }
 
 function readVal()
 {
     $daoVal = new \DAO\Validation\ValidationDAO();
     $val=$daoVal->read(1);
-    echo "trouvé : $val";
+    echo "trouvï¿½ : $val";
 }
 
 function updateVal()
@@ -368,7 +365,7 @@ function deleteVal()
     $daoVal = new \DAO\Validation\ValidationDAO();
     $val=$daoVal->read(1);
     $daoVal->delete($val);
-    echo "effacé : $val";
+    echo "effacï¿½ : $val";
 }
 
 ?>
@@ -378,13 +375,13 @@ include ("../db/Connexion.php");
 // $test="bonjour tout le monde";
 // echo $test;
 
-// $daoStagiaire = new \DAO\Stagiaire\StagiaireDAO ();
-// $stag=$daoStagiaire->read(1);
-// echo "avant: $stag";
-// $daoStagiaire->delete($stag);
-// echo "effacé : $stag";
-
-
+//---Test hashage---
+// $hash = '$2y$10$YHCt9Jkh406sn6JAXwp8NeW22G.51cPi17IRl07moU92tKEUz4xHK';
+// if (password_verify('passe', $hash)) {
+//     echo 'Le mot de passe est valide !';
+// } else {
+//     echo 'Le mot de passe est invalide.';
+// }
 
 echo DB\Connexion\Connexion::getTableauCompetences(1);
 
