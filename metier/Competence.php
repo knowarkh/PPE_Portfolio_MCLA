@@ -2,6 +2,7 @@
 namespace Competence\Stagiaire
 {
 
+                
     class Stagiaire
     {
 
@@ -12,14 +13,61 @@ namespace Competence\Stagiaire
         private $prenom = "Arnaud";
 
         private $mail = "collet.arn@gmail.com";
+        
+        private $validations = array(); //ajout
+        
+        private $documentations = array(); //ajout
 
-        function __construct($nom, $prenom, $mail)
+        function __construct($nom, $prenom, $mail, $mdp)
         {
             $this->nom = $nom;
             $this->prenom = $prenom;
             $this->mail = $mail;
+            $this->mdp = $mdp;
         }
 
+        /**
+         * @return mixed
+         */
+        public function getMdp()
+        {
+            return $this->mdp;
+        }
+        
+        /**
+         * @param mixed $mdp
+         */
+        public function setMdp($mdp)
+        {
+            $this->mdp = $mdp;
+        }
+    
+        public function getValidations()
+        {
+            return $this->validations;
+        }
+    
+        public function getDocumentations()
+        {
+            return $this->documentations;
+        }
+        
+    /*
+     * Ajoute un objet validation à la la liste validations
+     */
+        public function setValidations($validation)
+        {
+            $this->validations = $validations[]=$validation;
+        }
+    
+        /*
+         * Ajoute un objet Documentation à la liste documentations
+         */
+        public function setDocumentations($documentation)
+        {
+            $this->documentations = $documentations[]=$documentation;
+        }
+    
         public function getIdS()
         {
             return $this->idS;
@@ -81,7 +129,11 @@ namespace Competence\Activite
         private $processus;
 
         private $domaineActivite;
+        
+        private $competences = array();//ajout
 
+  
+    
         function __construct($denomination, $processus, $domaineActivite)
         {
             $this->denomination = $denomination;
@@ -89,6 +141,20 @@ namespace Competence\Activite
             $this->processus = $processus;
         }
 
+        public function getCompetences()
+        {
+            //renvoi la liste.
+            return $this->competences;
+        }
+        
+        /*
+         * Ajoute un objet competence à la liste competences
+         */
+        public function setCompetences($competence)
+        {
+            $this->competences = $competences[]=$competence;
+        }
+        
         public function getIdA()
         {
             return $this->idA;
@@ -145,6 +211,8 @@ namespace Competence\Competence
         private $idC = - 1;
 
         private $idA = - 1;
+        
+        private $activite;//ajout
 
         private $description = "bonjour";
 
@@ -154,6 +222,16 @@ namespace Competence\Competence
             $this->description = $description;
         }
 
+        public function getActivite()
+        {
+            return $this->activite;
+        }
+    
+        public function setActivite($activite)
+        {
+            $this->activite = $activite;
+        }
+    
         public function getIdC()
         {
             return $this->idC;
@@ -243,10 +321,16 @@ namespace Competence\Documentation
         private $idD = -1;
         
         private $idS = -1;
+        
+        private $stagiaire; //ajout
 
         private $idP = -1;
+        
+        private $projet; //Ajout
 
         private $description = "description";
+        
+        private $ressources = array();//ajout
 
         function __construct($idS, $idP, $description)
         {
@@ -255,6 +339,35 @@ namespace Competence\Documentation
             $this->idS = $idS;
         }
 
+        public function getStagiaire()
+        {
+            return $this->stagiaire;
+        }
+        
+        public function getRessources()
+        {
+            return $this->ressources;
+        }
+    
+        public function setRessources($ressource)
+        {
+            $this->ressources = $ressources[]=$ressource;
+        }
+    
+        public function getProjet()
+        {
+            return $this->projet;
+        }
+        
+        public function setStagiaire($stagiaire)
+        {
+            $this->stagiaire = $stagiaire;
+        }
+        
+        public function setProjet($projet)
+        {
+            $this->projet = $projet;
+        }
         public function getIdD()
         {
             return $this->idD;
@@ -405,16 +518,56 @@ namespace Competence\Validation
 
         private $idS = -1;
 
+        private $stagiaire; //ajout
+        
         private $idC = -1;
+        
+        private $Competence; //ajout
 
         private $contexte = "TP";
-
+        
+        private $ressources = array(); //ajout
+        
+        
         function __construct($idS, $idC, $contexte)
         {
             $this->contexte = $contexte;
             $this->idC = $idC;
             $this->idS = $idS;
         }
+        
+
+        public function getRessources()
+        {
+            return $this->ressources;
+        }
+    
+        public function setRessources($ressource)
+        {
+            $this->ressources = $ressources[]=$ressource;
+        }
+    
+        public function getStagiaire()
+        {
+            return $this->stagiaire;
+        }
+    
+        public function getCompetence()
+        {
+            return $this->Competence;
+        }
+    
+        public function setStagiaire($stagiaire)
+        {
+            $this->stagiaire = $stagiaire;
+        }
+    
+        public function setCompetence($Competence)
+        {
+            $this->Competence = $Competence;
+        }
+    
+
 
         
         /**

@@ -19,13 +19,15 @@ namespace DAO
 
         protected $table;
 
+        protected $donnees = array();
+
         function __construct($key, $table)
         {
             $this->key = $key;
             $this->table = $table;
         }
 
-        // ---R�cup�re la derni�re cl� cr�� par l'auto-increment---
+        // ---R�cup�re la derni�re cl� cr�� par l'auto-increment---
         function getLastKey()
         {
             $sql = "SELECT MAX($this->key) as max FROM $this->table;";
@@ -35,6 +37,13 @@ namespace DAO
             $id = $row["max"];
             return $id;
         }
+
+        function afficheDonnees()
+        {
+            foreach ($donnees as $cle => $val) {
+                echo $cle->$val;
+            }
+        }
     }
 }
 namespace DAO\Stagiaire
@@ -42,6 +51,15 @@ namespace DAO\Stagiaire
 
     class StagiaireDAO extends \DAO\DAO
     {
+
+        static function getInstance()
+        {
+            static $objetDAO = null;
+            if ($objetDAO == null) {
+                $objetDAO = new StagiaireDAO();
+            }
+            return $objetDAO;
+        }
 
         function __construct()
         {
@@ -51,35 +69,50 @@ namespace DAO\Stagiaire
         // ---Methodes CRUD table STAGIAIRE---
         public function read($id)
         {
-            $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
-            $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
+            $rep = null;
             
-            $row = $stmt->fetch();
-            $num = $row["idS"];
-            $nom = $row["nom"];
-            $prenom = $row["prenom"];
-            $mail = $row["mail"];
-            $rep = new \Competence\Stagiaire\Stagiaire($nom, $prenom, $mail);
-            $rep->setIdS($num);
+            if (key_exists($id, $this->donnees)) {
+                $rep = $this->donnees[$id];
+                // echo "utilisation du tableau";
+            } 
+            else {
+                
+                $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
+                $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+                
+                $row = $stmt->fetch();
+                $num = $row["idS"];
+                $nom = $row["nom"];
+                $prenom = $row["prenom"];
+                $mail = $row["mail"];
+                
+                $rep = new \Competence\Stagiaire\Stagiaire($nom, $prenom, $mail);
+                $rep->setIdS($num);
+                // ajout dans le tableau de données
+                $this->donnees[$id] = $rep;
+                // echo $this->donnees[$id];
+            }
             return $rep;
         }
 
         public function update($objet)
         {
-            $sql = "UPDATE $this->table SET nom =:nom, prenom =:prenom , mail =:mail WHERE $this->key=:id";
+            $sql = "UPDATE $this->table SET nom =:nom, prenom =:prenom , mail =:mail, mdp =:mdp WHERE $this->key=:id";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
             $id = $objet->getIdS();
             $nom = $objet->getNom();
             $prenom = $objet->getPrenom();
             $mail = $objet->getMail();
+            $mdp = $objet->getMdp();
             
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':prenom', $prenom);
             $stmt->bindParam(':mail', $mail);
+            $stmt->bindParam(':mdp', $mdp);
             
             $stmt->execute();
         }
@@ -92,24 +125,32 @@ namespace DAO\Stagiaire
             $id = $objet->getIdS();
             $stmt->bindParam(':id', $id);
             
+            // retrait du tableau donnees
+            unset($this->donnees[$id]);
+            
             $stmt->execute();
         }
 
         public function create($objet)
         {
-            $sql = "INSERT INTO $this->table (nom,prenom,mail) VALUES (:nom,:prenom,:mail);";
+            $sql = "INSERT INTO $this->table (nom,prenom,mail,mdp) VALUES (:nom,:prenom,:mail, :mdp);";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             
             $nom = $objet->getNom();
             $prenom = $objet->getPrenom();
             $mail = $objet->getMail();
+            $mdp = $objet->getMdp();
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':prenom', $prenom);
             $stmt->bindParam(':mail', $mail);
+            $stmt->bindParam(':mdp', $mdp);
             $stmt->execute();
             
             $id = $this->getLastKey();
             $objet->setIdS($id);
+            
+            // ajout dans le tableau données
+            $this->donnees[$id] = $objet;
         }
     }
 }
@@ -119,6 +160,15 @@ namespace DAO\Activite
     class ActiviteDAO extends \DAO\DAO
     {
 
+        static function getInstance()
+        {
+            static $objetDAO = null;
+            if ($objetDAO == null) {
+                $objetDAO = new ActiviteDAO();
+            }
+            return $objetDAO;
+        }
+
         function __construct()
         {
             parent::__construct("idA", "ACTIVITE");
@@ -126,19 +176,28 @@ namespace DAO\Activite
 
         public function read($id)
         {
-            $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
-            $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
+            $rep = null;
             
-            $row = $stmt->fetch();
-            $num = $row["idA"];
-            $denomination = $row["denomination"];
-            $processus = $row["processus"];
-            $domaineActivite = $row["domaineActivite"];
-            
-            $rep = new \Competence\Activite\Activite($denomination, $processus, $domaineActivite);
-            $rep->setIdA($num);
+            if (key_exists($id, $this->donnees)) {
+                $rep = $this->donnees[$id];
+                // echo "utilisation du tableau";
+            } else {
+                $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
+                $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+                
+                $row = $stmt->fetch();
+                $num = $row["idA"];
+                $denomination = $row["denomination"];
+                $processus = $row["processus"];
+                $domaineActivite = $row["domaineActivite"];
+                
+                $rep = new \Competence\Activite\Activite($denomination, $processus, $domaineActivite);
+                $rep->setIdA($num);
+                // ajout dans le tableau de données
+                $this->donnees[$id] = $rep;
+            }
             return $rep;
         }
 
@@ -169,6 +228,9 @@ namespace DAO\Activite
             $stmt->bindParam(':id', $id);
             
             $stmt->execute();
+            
+            //Supprime l'objet du tableau donnees
+            unset($this->donnees[$id]);
         }
 
         public function create($objet)
@@ -187,6 +249,9 @@ namespace DAO\Activite
             
             $id = $this->getLastKey();
             $objet->setIdA($id);
+            
+            // ajout dans le tableau données
+            $this->donnees[$id] = $objet;
         }
     }
 }
@@ -196,6 +261,15 @@ namespace DAO\Competence
     class CompetenceDAO extends \DAO\DAO
     {
 
+        static function getInstance()
+        {
+            static $objetDAO = null;
+            if ($objetDAO == null) {
+                $objetDAO = new CompetenceDAO();
+            }
+            return $objetDAO;
+        }
+
         function __construct()
         {
             parent::__construct("idC", "COMPETENCE");
@@ -203,6 +277,14 @@ namespace DAO\Competence
 
         public function read($id)
         {
+            $rep = null;
+            
+            if (key_exists($id, $this->donnees)) {
+                $rep = $this->donnees[$id];
+                // echo "utilisation du tableau";
+            } else {
+                
+            
             $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -215,6 +297,9 @@ namespace DAO\Competence
             
             $rep = new \Competence\Competence\Competence($act, $description);
             $rep->setIdC($num);
+            // ajout dans le tableau de données
+            $this->donnees[$id] = $rep;
+            }
             return $rep;
         }
 
@@ -243,6 +328,9 @@ namespace DAO\Competence
             $stmt->bindParam(':id', $id);
             
             $stmt->execute();
+            
+            //Supprime l'objet du tableau donnees
+            unset($this->donnees[$id]);
         }
 
         public function create($objet)
@@ -258,6 +346,9 @@ namespace DAO\Competence
             
             $id = $this->getLastKey();
             $objet->setIdC($id);
+            
+            // ajout dans le tableau données
+            $this->donnees[$id] = $objet;
         }
     }
 }
@@ -267,6 +358,15 @@ namespace DAO\Projet
     class ProjetDAO extends \DAO\DAO
     {
 
+        static function getInstance()
+        {
+            static $objetDAO = null;
+            if ($objetDAO == null) {
+                $objetDAO = new ProjetDAO();
+            }
+            return $objetDAO;
+        }
+
         function __construct()
         {
             parent::__construct("idP", "PROJET");
@@ -274,6 +374,12 @@ namespace DAO\Projet
 
         public function read($id)
         {
+            $rep = null;
+            
+            if (key_exists($id, $this->donnees)) {
+                $rep = $this->donnees[$id];
+                // echo "utilisation du tableau";
+            } else {
             $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -285,6 +391,9 @@ namespace DAO\Projet
             
             $rep = new \Competence\Projet\Projet($denomination);
             $rep->setIdP($num);
+            // ajout dans le tableau de données
+            $this->donnees[$id] = $rep;
+            }
             return $rep;
         }
 
@@ -311,6 +420,9 @@ namespace DAO\Projet
             $stmt->bindParam(':id', $id);
             
             $stmt->execute();
+            
+            //Supprime l'objet du tableau donnees
+            unset($this->donnees[$id]);
         }
 
         public function create($objet)
@@ -324,6 +436,9 @@ namespace DAO\Projet
             
             $id = $this->getLastKey();
             $objet->setIdP($id);
+            
+            // ajout dans le tableau données
+            $this->donnees[$id] = $objet;
         }
     }
 }
@@ -333,6 +448,15 @@ namespace DAO\Documentation
     class DocumentationDAO extends \DAO\DAO
     {
 
+        static function getInstance()
+        {
+            static $objetDAO = null;
+            if ($objetDAO == null) {
+                $objetDAO = new DocumentationDAO();
+            }
+            return $objetDAO;
+        }
+
         function __construct()
         {
             parent::__construct("idD", "DOCUMENTATION");
@@ -340,6 +464,12 @@ namespace DAO\Documentation
 
         public function read($id)
         {
+            $rep = null;
+            
+            if (key_exists($id, $this->donnees)) {
+                $rep = $this->donnees[$id];
+                // echo "utilisation du tableau";
+            } else {
             $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -353,6 +483,9 @@ namespace DAO\Documentation
             
             $rep = new \Competence\Documentation\Documentation($idS, $idP, $description);
             $rep->setIdD($num);
+            // ajout dans le tableau de données
+            $this->donnees[$id] = $rep;
+            }
             return $rep;
         }
 
@@ -383,6 +516,9 @@ namespace DAO\Documentation
             $stmt->bindParam(':id', $id);
             
             $stmt->execute();
+            
+            //Supprime l'objet du tableau donnees
+            unset($this->donnees[$id]);
         }
 
         public function create($objet)
@@ -400,20 +536,41 @@ namespace DAO\Documentation
             
             $id = $this->getLastKey();
             $objet->setIdD($id);
+            
+            // ajout dans le tableau données
+            $this->donnees[$id] = $objet;
         }
     }
 }
 namespace DAO\Ressource
 {
+
     class RessourceDAO extends \DAO\DAO
     {
-        
+
+        static function getInstance()
+        {
+            static $objetDAO = null;
+            if ($objetDAO == null) {
+                $objetDAO = new RessourceDAO();
+            }
+            return $objetDAO;
+        }
+
         function __construct()
         {
             parent::__construct("idR", "RESSOURCE");
         }
+
         public function read($id)
+       
         {
+            $rep = null;
+            
+            if (key_exists($id, $this->donnees)) {
+                $rep = $this->donnees[$id];
+                // echo "utilisation du tableau";
+            } else {
             $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -424,13 +581,16 @@ namespace DAO\Ressource
             $nom = $row['nom'];
             $chemin = $row["chemin"];
             $typeFichier = $row["typeFichier"];
-            $tailleFichier =$row['tailleFichier'];
+            $tailleFichier = $row['tailleFichier'];
             
-            $rep = new \Competence\Ressource\Ressource($chemin, $typeFichier);
+            $rep = new \Competence\Ressource\Ressource($nom, $chemin, $typeFichier, $tailleFichier);
             $rep->setIdR($num);
+            // ajout dans le tableau de données
+            $this->donnees[$id] = $rep;
+            }
             return $rep;
         }
-        
+
         public function update($objet)
         {
             $sql = "UPDATE $this->table SET nom=:nom,chemin =:chemin, typeFichier =:typeFichier, tailleFichier =:tailleFichier WHERE $this->key=:id";
@@ -440,7 +600,7 @@ namespace DAO\Ressource
             $nom = $objet->getNom();
             $chemin = $objet->getChemin();
             $typeFichier = $objet->getTypeFichier();
-            $tailleFichier= $objet->getTailleFichier();
+            $tailleFichier = $objet->getTailleFichier();
             
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':nom', $nom);
@@ -450,7 +610,7 @@ namespace DAO\Ressource
             
             $stmt->execute();
         }
-        
+
         public function delete($objet)
         {
             $sql = "DELETE FROM $this->table WHERE $this->key=:id;";
@@ -460,8 +620,11 @@ namespace DAO\Ressource
             $stmt->bindParam(':id', $id);
             
             $stmt->execute();
+            
+            //Supprime l'objet du tableau donnees
+            unset($this->donnees[$id]);
         }
-        
+
         public function create($objet)
         {
             $sql = "INSERT INTO $this->table (nom, chemin, typeFichier, tailleFichier) VALUES (:nom,:chemin, :typeFichier, :tailleFichier);";
@@ -480,20 +643,39 @@ namespace DAO\Ressource
             $id = $this->getLastKey();
             $objet->setIdR($id);
             
+            // ajout dans le tableau données
+            $this->donnees[$id] = $objet;
         }
-    }   
+    }
 }
 namespace DAO\Validation
 {
+
     class ValidationDAO extends \DAO\DAO
     {
-        
+
+        static function getInstance()
+        {
+            static $objetDAO = null;
+            if ($objetDAO == null) {
+                $objetDAO = new ValidationDAO();
+            }
+            return $objetDAO;
+        }
+
         function __construct()
         {
             parent::__construct("idV", "VALIDATION");
         }
+
         public function read($id)
         {
+            $rep = null;
+            
+            if (key_exists($id, $this->donnees)) {
+                $rep = $this->donnees[$id];
+                // echo "utilisation du tableau";
+            } else {
             $sql = "SELECT * FROM $this->table WHERE $this->key=:id";
             $stmt = \DB\Connexion\Connexion::getInstance()->prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -507,9 +689,12 @@ namespace DAO\Validation
             
             $rep = new \Competence\Validation\Validation($idS, $idC, $contexte);
             $rep->setIdV($num);
+            // ajout dans le tableau de données
+            $this->donnees[$id] = $rep;
+            }
             return $rep;
         }
-        
+
         public function update($objet)
         {
             $sql = "UPDATE $this->table SET idS =:idS, idC =:idC, contexte =:contexte WHERE $this->key=:id";
@@ -527,7 +712,7 @@ namespace DAO\Validation
             
             $stmt->execute();
         }
-        
+
         public function delete($objet)
         {
             $sql = "DELETE FROM $this->table WHERE $this->key=:id;";
@@ -537,8 +722,10 @@ namespace DAO\Validation
             $stmt->bindParam(':id', $id);
             
             $stmt->execute();
+            //Supprime l'objet du tableau donnees
+            unset($this->donnees[$id]);
         }
-        
+
         public function create($objet)
         {
             $sql = "INSERT INTO $this->table (idS, idC, contexte) VALUES (:idS, :idC, :contexte);";
@@ -546,7 +733,7 @@ namespace DAO\Validation
             $idS = $objet->getIdS();
             $idC = $objet->getIdC();
             $contexte = $objet->getContexte();
-            //echo "$idS, $idC, $contexte";
+            // echo "$idS, $idC, $contexte";
             $stmt->bindParam(':idS', $idS);
             $stmt->bindParam(':idC', $idC);
             $stmt->bindParam(':contexte', $contexte);
@@ -554,7 +741,10 @@ namespace DAO\Validation
             
             $id = $this->getLastKey();
             $objet->setIdV($id);
+            
+            // ajout dans le tableau données
+            $this->donnees[$id] = $objet;
         }
-    }   
+    }
 }
 ?>
